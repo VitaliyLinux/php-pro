@@ -1,30 +1,16 @@
 <?php
 
-include_once "classes/RGB.php";
-include_once "classes/equals.php";
+require_once __DIR__ . '/vendor/autoload.php';
 
-$color_one = new RGB(32,253,122);
-$color_two = new RGB(32,253,122);
+use classes\User;
 
-$eq = new Equals();
+$user = new User();
 
-if($eq->equals($color_one, $color_two))
-    echo "Colors " . $color_one->getRGB() . " and " . $color_two->getRGB() ." is equal";
-else
-    echo "Colors " . $color_one->getRGB() . " and " . $color_two->getRGB() ." is not equal";
+$user->get();
+echo '<br>';
 
-echo "<br><br>";
-
-$color = RGB::random();
-
-echo $color->getRGB();
-
-$color_one = new RGB(3,23,12);
-$color_two = new RGB(32,3,122);
-
-echo "<br><br>";
-
-echo $eq->mix($color_one, $color_two)->getRGB();
+$user->setEmail('frend@gmail.com');
+echo $user->getEmail();
 
 
 
